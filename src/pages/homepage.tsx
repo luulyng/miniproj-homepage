@@ -16,6 +16,7 @@ const HomePage: React.FC = () => {
       <Offer />
       <Products />
       <Subscribe />
+      
     </div>
   );
 };

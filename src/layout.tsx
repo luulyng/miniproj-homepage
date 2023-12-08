@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useState } from 'react';
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping, FaAngleUp, FaAngleDown } from "react-icons/fa6";
 
 
 // Header
@@ -10,11 +10,23 @@ const MenuItem = ({ to, text, className }: { to: string, text: string, className
   </Link>
 );
 
-const DropdownMenuItem = ({ to, text }: { to: string, text: string }) => (
-  <div className="block">
-    <Link to={to} className="hover:bg-gray-300 block ml-2 mr-2">{text}</Link>
-  </div>
-);
+const DropdownMenuItem = ({ to, text }: { to: string; text: string }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="block relative">
+      <Link
+        to={to}
+        className="hover:text-black block ml-2 mr-2 flex items-center"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <span>{text}</span>
+        {text === 'Blog' && (hovered ? <FaAngleUp className="ml-1" /> : <FaAngleDown className="ml-1" />)}
+      </Link>
+    </div>
+  );
+};
 
 const ShoppingCart = () => (
   <div className="relative mb-8">
@@ -39,7 +51,7 @@ const Header = () => {
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
-            <MenuItem to="/blog" text="Blog" />
+          <DropdownMenuItem to="/blog" text="Blog" />
             {showDropdown && (
               <div
                 className="absolute top-full left-0 bg-white text-black z-10 py-2 w-36 rounded-lg shadow-lg"
@@ -52,6 +64,7 @@ const Header = () => {
               </div>
             )}
           </div>
+
           <MenuItem to="/category" text="Category" />
           <MenuItem to="/product" text="Product" />
           <MenuItem to="/login" text="Login" />
@@ -97,7 +110,7 @@ const Footer = () => (
   <footer className="bg-gray-900 text-white py-8">
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
       <FooterAbout
-        title="About Us"
+        title="ABOUT US"
         content={
           <>
             Electrician <br />
@@ -107,7 +120,7 @@ const Footer = () => (
       />
 
       <div>
-      <h2 className="text-lg font-bold mb-2">Contact Info</h2>
+      <h2 className="text-lg font-bold mb-2">CONTACT INFO</h2>
       <FooterContact
         subtitle="Address:"
         content="123 Street Name, City, England"
@@ -138,7 +151,7 @@ const Footer = () => (
       </div>
 
       <div>
-      <h2 className="text-lg font-bold mb-2">CUSTOMER SERVICE</h2>
+      <h2 className="text-lg font-bold mb-2">POPPULAR TAGS</h2>
       <FooterTag tag="Bag" />
       <FooterTag tag="Black" />
       <FooterTag tag="Blue" />
