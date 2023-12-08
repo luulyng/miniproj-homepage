@@ -66,7 +66,7 @@ const Header = () => {
 
 
 // Footer
-const FooterAbout = ({ title, content }: { title: string, content: string }) => (
+const FooterAbout = ({ title, content }: { title: string, content: React.ReactNode }) => (
   <div className="mb-4">
     <h2 className="text-lg font-bold mb-2">{title}</h2>
     <p className="text-slate-400">{content}</p>
