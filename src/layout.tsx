@@ -17,7 +17,7 @@ const DropdownMenuItem = ({ to, text }: { to: string; text: string }) => {
     <div className="block relative">
       <Link
         to={to}
-        className="hover:text-black block ml-2 mr-2 flex items-center"
+        className="hover:text-black ml-2 mr-2 flex items-center"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -58,9 +58,9 @@ const Header = () => {
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <DropdownMenuItem to="/tech" text="Tech" />
-                <DropdownMenuItem to="/sport" text="Sport" />
-                <DropdownMenuItem to="/fashion" text="Fashion" />
+                <DropdownMenuItem to="/" text="Tech" />
+                <DropdownMenuItem to="/" text="Sport" />
+                <DropdownMenuItem to="/" text="Fashion" />
               </div>
             )}
           </div>
