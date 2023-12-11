@@ -1,17 +1,16 @@
 {
   "name": "miniproj-homepage",
-
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://luulyng.github.io/miniproj-homepage",
   "type": "module",
-  
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
-
-
   },
   "dependencies": {
     "gh-pages": "^6.1.0",
